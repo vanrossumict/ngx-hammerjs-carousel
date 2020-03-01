@@ -1,4 +1,34 @@
-# NgxHammerjsCarousel
+# HammerjsCarousel
+
+## Usage
+
+`npm install ngx-hammerjs-carousel --save`
+
+In your (app) module:
+`
+import { HammerjsCarouselModule } from 'ngx-hammerjs-carousel';
+...
+imports: [
+    ...
+    HammerjsCarouselModule
+    ...
+  ],
+`
+
+In your TypeScript:
+`
+slides = [
+    'https://cdn.mijnreservering.info/janvanrossum/5medium.jpg',
+    'https://cdn.mijnreservering.info/janvanrossum/3medium.jpg',
+    'https://cdn.mijnreservering.info/janvanrossum/8medium.jpg'
+  ];
+`'
+
+In your template:
+`<hammerjs-carousel [slides]="slides"></hammerjs-carousel>`
+
+
+# Library development info
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
 

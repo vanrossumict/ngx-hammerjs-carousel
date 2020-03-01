@@ -17,7 +17,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-hammerjs-carousel": [
+        "dist/ngx-hammerjs-carousel/ngx-hammerjs-carousel",
+        "dist/ngx-hammerjs-carousel"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
