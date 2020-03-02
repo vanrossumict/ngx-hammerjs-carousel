@@ -1,7 +1,9 @@
 # HammerjsCarousel
 
 A photo/image carousel/swiper for Angular that uses Hammer.JS.
+
 Inspired by [a great blog post](https://blog.envylabs.com/build-your-own-touch-slider-with-hammerjs-af99665d2869) by Drew Powers.
+
 Online demo: https://stackblitz.com/edit/ngx-hammerjs-carousel-example
 
 ## Usage
