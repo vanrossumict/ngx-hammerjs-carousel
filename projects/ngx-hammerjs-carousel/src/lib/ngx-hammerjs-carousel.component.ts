@@ -5,8 +5,11 @@ import { Component, OnInit, Input } from '@angular/core';
   template: `
   <div class="has-slider">
     <div class="slider" (pan)="onPan($event)" [style.transform]="sliderTransformStyle" [style.width]="slideCount + '00%'"
-    [ngClass]="{ 'is-animating': isAnimating }">
+         [ngClass]="{ 'is-animating': isAnimating }">
       <div class="slider-panel" *ngFor="let slide of slides" [style.background-image]="'url(' + slide + ')'"></div>
+    </div>
+    <div class="slider-pagination">
+      <div *ngFor="let slide of slides; index as index;" [ngClass]="{ 'is-active': isActive(index) }"></div>
     </div>
   </div>
   `,
@@ -30,6 +33,27 @@ import { Component, OnInit, Input } from '@angular/core';
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
+    }
+    .slider-pagination {
+      bottom: 6.25%;
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+    }
+    .slider-pagination > div {
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75);
+      display: inline-block;
+      height: 6px;
+      margin-left: 4px;
+      margin-right: 4px;
+      transition: background-color 250ms;
+      width: 6px;
+    }
+    .slider-pagination > div.is-active {
+      background-color: rgba(255, 255, 255, 0.75);
     }
   `]
 })
@@ -95,5 +119,9 @@ export class HammerjsCarouselComponent implements OnInit {
     this.sliderTransformStyle = 'translateX(' + percentage + '%)';
     clearTimeout(this.animatingTimeout);
     this.animatingTimeout = setTimeout(() => this.isAnimating = false, 400);
+  }
+
+  isActive(index: number) {
+    return this.activeSlide === index;
   }
 }
