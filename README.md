@@ -1,6 +1,6 @@
 # HammerjsCarousel
 
-A photo/image carousel/swiper for Angular that uses Hammer.JS.
+A photo/image carousel/slider/swiper for Angular that uses Hammer.JS.
 
 Inspired by [a great blog post](https://blog.envylabs.com/build-your-own-touch-slider-with-hammerjs-af99665d2869) by Drew Powers.
 
@@ -50,6 +50,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Publish
 
-1. Run `npm run build-publish` to build the project for publishing to npm.
-2. Go to the /dist/ngx-hammerjs-carousel folder
-3. Run `npm publish`
+1. Up the version in projects/ngx-hammerjs-carousel/package.json
+2. Run `npm run build-publish` to build the project for publishing to npm.
+3. Go to the /dist/ngx-hammerjs-carousel folder
+4. Run `npm publish`

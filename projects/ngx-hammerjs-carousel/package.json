@@ -5,13 +5,14 @@
     "name": "Jan van Rossum",
     "url": "https://github.com/vanrossumict"
   },
-  "description": "A photo/image carousel/swiper for Angular that uses Hammer.JS",
+  "description": "A photo/image carousel/slider/swiper for Angular that uses Hammer.JS",
   "keywords": [
     "angular",
     "hammerjs",
     "image",
     "photo",
     "carousel",
+    "slider",
     "swiper",
     "typescript"
   ],
