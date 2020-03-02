@@ -7,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   slides = [
-    'https://cdn.mijnreservering.info/janvanrossum/5medium.jpg',
-    'https://cdn.mijnreservering.info/janvanrossum/3medium.jpg',
-    'https://cdn.mijnreservering.info/janvanrossum/8medium.jpg'
+    'https://cdn.mijnreservering.info/janvanrossum/37medium.jpg',
+    'https://cdn.mijnreservering.info/janvanrossum/38medium.jpg',
+    'https://cdn.mijnreservering.info/janvanrossum/39medium.jpg',
+    'https://cdn.mijnreservering.info/janvanrossum/40medium.jpg',
+    'https://cdn.mijnreservering.info/janvanrossum/41medium.jpg'
   ];
 }

@@ -1,6 +1,20 @@
 {
   "name": "ngx-hammerjs-carousel",
   "version": "0.0.1",
+  "author": {
+    "name": "Jan van Rossum",
+    "url": "https://github.com/vanrossumict"
+  },
+  "description": "A photo/image carousel/swiper for Angular that uses Hammer.JS",
+  "keywords": [
+    "angular",
+    "hammerjs",
+    "image",
+    "photo",
+    "carousel",
+    "swiper",
+    "typescript"
+  ],
   "peerDependencies": {
     "@angular/common": ">= 2.0.0",
     "@angular/core": ">= 2.0.0",
