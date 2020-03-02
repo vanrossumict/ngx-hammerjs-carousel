@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "npx ng serve --open --port 4206",
+    "build": "npx ng build",
+    "build-watch": "npx ng build ngx-hammerjs-carousel --watch",
+    "build-publish": "npx ng build ngx-hammerjs-carousel --prod",
+    "test": "npx ng test",
+    "lint": "npx ng lint",
+    "e2e": "npx ng e2e"
   },
   "private": true,
   "dependencies": {

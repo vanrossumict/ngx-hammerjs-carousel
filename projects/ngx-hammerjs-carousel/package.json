@@ -2,9 +2,9 @@
   "name": "ngx-hammerjs-carousel",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^9.0.3",
-    "@angular/core": "^9.0.3",
-    "hammerjs": "^2.0.8",
-    "tslib": "^1.10.0"
+    "@angular/common": ">= 2.0.0",
+    "@angular/core": ">= 2.0.0",
+    "hammerjs": "^2.0.0",
+    "tslib": ">= 1.0.0"
   }
 }
