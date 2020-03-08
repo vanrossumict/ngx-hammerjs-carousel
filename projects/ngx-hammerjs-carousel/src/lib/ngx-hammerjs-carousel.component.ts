@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, AfterViewChecked, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, AfterViewChecked, ViewChild, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'hammerjs-carousel',
@@ -13,51 +13,15 @@ import { Component, OnInit, Input, ElementRef, AfterViewChecked, ViewChild } fro
         <div class="slider-page" [ngClass]="{ 'is-active': isActive(index) }"></div>
       </div>
     </div>
+    <div class="slider-button left" *ngIf="!isTouchDevice" (click)="previousSlide()">
+      <span class="chevron left" [style.font-size]="chevronFontSize" [style.margin-left]="chevronMarginLeft"></span>
+    </div>
+    <div class="slider-button right" *ngIf="!isTouchDevice" (click)="nextSlide()">
+      <span class="chevron right" [style.font-size]="chevronFontSize" [style.margin-left]="chevronMarginLeft"></span>
+    </div>
   </div>
   `,
-  styles: [`
-    .slider-wrapper {
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-    .slider {
-      display: flex;
-      height: 100%;
-    }
-    .slider.is-animating {
-      transition: transform 400ms cubic-bezier( 0.5, 0, 0.5, 1);
-    }
-    .slider-panel {
-      width: 100%;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    .slider-pagination {
-      bottom: 6.25%;
-      left: 0;
-      position: absolute;
-      text-align: center;
-      width: 100%;
-    }
-    .slider-pagination > div {
-      padding: 4px;
-      display: inline-block;
-      cursor: pointer;
-    }
-    .slider-pagination .slider-page {
-      border-radius: 50%;
-      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75);
-      height: 6px;
-      transition: background-color 250ms;
-      width: 6px;
-    }
-    .slider-pagination .slider-page.is-active {
-      background-color: rgba(255, 255, 255, 0.75);
-    }
-  `]
+  styleUrls: ['./ngx-hammerjs-carousel.component.css']
 })
 export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
   private slidesInternal: string[];
@@ -78,20 +42,31 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
   sliderTransformStyle: string;
   isAnimating: boolean;
   slideCount: number;
+  isTouchDevice: boolean;
+  chevronFontSize: string;
+  chevronMarginLeft: string;
 
+  private width: number;
   private activeSlide = 0;
   private sensitivity = 10;
   private animatingTimeout: any;
 
-  constructor() { }
+  constructor(private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.isTouchDevice = 'ontouchstart' in window;
   }
 
   ngAfterViewChecked(): void {
     const sliderWrapperElement = this.sliderWrapper.nativeElement as HTMLElement;
-    const width = sliderWrapperElement.offsetWidth;
-    this.sensitivity = width / 40;
+    if (sliderWrapperElement.offsetWidth === this.width) {
+      return;
+    }
+    this.width = sliderWrapperElement.offsetWidth;
+    this.sensitivity = this.width / 40;
+    this.chevronFontSize = this.width / 16 + 'px';
+    this.chevronMarginLeft = '-' + (this.width / 16) / 2 + 'px';
+    this.cdRef.detectChanges();
   }
 
   onPan(e: any) {
@@ -112,6 +87,24 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
           this.goToSlide(this.activeSlide);
         }
       }
+    }
+  }
+
+  previousSlide() {
+    const slideIndex = this.activeSlide - 1;
+    if (slideIndex < 0) {
+      this.goToSlide(this.slideCount - 1);
+    } else {
+      this.goToSlide(slideIndex);
+    }
+  }
+
+  nextSlide() {
+    const slideIndex = this.activeSlide + 1;
+    if (slideIndex === this.slideCount) {
+      this.goToSlide(0);
+    } else {
+      this.goToSlide(slideIndex);
     }
   }
 

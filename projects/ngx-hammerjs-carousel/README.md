@@ -1,24 +1,40 @@
-# NgxHammerjsCarousel
+# HammerjsCarousel
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+A photo/image carousel/slider/swiper for Angular that uses Hammer.JS.
 
-## Code scaffolding
+Inspired by [a great blog post](https://blog.envylabs.com/build-your-own-touch-slider-with-hammerjs-af99665d2869) from Drew Powers.
 
-Run `ng generate component component-name --project ngx-hammerjs-carousel` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-hammerjs-carousel`.
-> Note: Don't forget to add `--project ngx-hammerjs-carousel` or else it will be added to the default project in your `angular.json` file. 
+Online demo: https://stackblitz.com/edit/ngx-hammerjs-carousel-example
 
-## Build
+## Usage
 
-Run `ng build ngx-hammerjs-carousel` to build the project. The build artifacts will be stored in the `dist/` directory.
+`npm install hammerjs ngx-hammerjs-carousel --save`
 
-## Publishing
+In your (app) module:
+```typescript
+import { HammerjsCarouselModule } from 'ngx-hammerjs-carousel';
+...
+@NgModule({
+  ...
+  imports: [
+    ...
+    HammerjsCarouselModule
+    ...
+  ],
+```
 
-After building your library with `ng build ngx-hammerjs-carousel`, go to the dist folder `cd dist/ngx-hammerjs-carousel` and run `npm publish`.
+In your TypeScript:
+```typescript
+  slides = [
+    'https://cdn.mijnreservering.info/janvanrossum/37medium.jpg',
+    'https://cdn.mijnreservering.info/janvanrossum/38medium.jpg',
+    'https://cdn.mijnreservering.info/janvanrossum/39medium.jpg',
+    'https://cdn.mijnreservering.info/janvanrossum/40medium.jpg',
+    'https://cdn.mijnreservering.info/janvanrossum/41medium.jpg'
+  ];
+```
 
-## Running unit tests
-
-Run `ng test ngx-hammerjs-carousel` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+In your template:
+```html
+<hammerjs-carousel [slides]="slides"></hammerjs-carousel>
+```
