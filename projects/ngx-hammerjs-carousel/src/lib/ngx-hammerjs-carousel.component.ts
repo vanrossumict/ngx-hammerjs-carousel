@@ -8,16 +8,16 @@ import { Component, OnInit, Input, ElementRef, AfterViewChecked, ViewChild, Chan
          [ngClass]="{ 'is-animating': isAnimating }">
       <div class="slider-panel" *ngFor="let slide of slides" [style.background-image]="'url(' + slide + ')'"></div>
     </div>
+    <div class="slider-button left" *ngIf="!isTouchDevice" (click)="previousSlide()">
+      <span class="chevron left" [style.font-size]="chevronFontSize"></span>
+    </div>
+    <div class="slider-button right" *ngIf="!isTouchDevice" (click)="nextSlide()">
+      <span class="chevron right" [style.font-size]="chevronFontSize"></span>
+    </div>
     <div class="slider-pagination">
       <div *ngFor="let slide of slides; index as index;" (click)="goToSlide(index)">
         <div class="slider-page" [ngClass]="{ 'is-active': isActive(index) }"></div>
       </div>
-    </div>
-    <div class="slider-button left" *ngIf="!isTouchDevice" (click)="previousSlide()">
-      <span class="chevron left" [style.font-size]="chevronFontSize" [style.margin-left]="chevronMarginLeft"></span>
-    </div>
-    <div class="slider-button right" *ngIf="!isTouchDevice" (click)="nextSlide()">
-      <span class="chevron right" [style.font-size]="chevronFontSize" [style.margin-left]="chevronMarginLeft"></span>
     </div>
   </div>
   `,
@@ -44,7 +44,6 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
   slideCount: number;
   isTouchDevice: boolean;
   chevronFontSize: string;
-  chevronMarginLeft: string;
 
   private width: number;
   private activeSlide = 0;
@@ -64,8 +63,7 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
     }
     this.width = sliderWrapperElement.offsetWidth;
     this.sensitivity = this.width / 40;
-    this.chevronFontSize = this.width / 16 + 'px';
-    this.chevronMarginLeft = '-' + (this.width / 16) / 2 + 'px';
+    this.chevronFontSize = this.width / 11 + 'px';
     this.cdRef.detectChanges();
   }
 
