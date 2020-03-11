@@ -68,6 +68,10 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
   }
 
   onPan(e: any) {
+    if (e.velocityX === 0 || Math.abs(e.velocityY) > Math.abs(e.velocityX)) {
+      // Vertical scroll
+      return;
+    }
     const percentage = 100 / this.slideCount * e.deltaX / window.innerWidth;
     const transformPercentage = percentage - 100 / this.slideCount * this.activeSlide;
     this.sliderTransformStyle = 'translateX( ' + transformPercentage + '% )';

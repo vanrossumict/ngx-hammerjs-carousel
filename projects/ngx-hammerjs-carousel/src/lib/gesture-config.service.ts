@@ -6,8 +6,13 @@ import * as Hammer from 'hammerjs';
   providedIn: 'root'
 })
 export class GestureConfigService extends HammerGestureConfig {
-  overrides = {
-    pan: { direction: Hammer.DIRECTION_ALL },
-    swipe: { direction: Hammer.DIRECTION_VERTICAL },
-  };
+  buildHammer(element: HTMLElement) {
+    const mc = new Hammer(element, {
+      touchAction: 'pan-y',
+      recognizers: [
+        [Hammer.Pan],
+      ]
+    });
+    return mc;
+  }
 }
