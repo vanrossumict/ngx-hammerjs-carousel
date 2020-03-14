@@ -23,7 +23,7 @@
 
 .slider-button {
     position: absolute;
-    color: rgba(255, 255, 255, 0.6);
+    opacity: 0.7;
     height: 100%;
     top: 0;
     width: 50%;
@@ -32,11 +32,11 @@
 
 .slider-button:hover {
     color: #fff;
+    opacity: 1;
 }
 
 .slider-button.left {
     left: 0;
-    padding-left: 5%;
 }
 
 .slider-button.left:hover {
@@ -45,8 +45,6 @@
 
 .slider-button.right {
     right: 0;
-    text-align: right;
-    padding-right: 14%;
 }
 
 .slider-button.right:hover {
@@ -56,8 +54,14 @@
 .slider-button .chevron {
     position: absolute;
     top: 50%;
-    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    width: 16%;
+    padding: 7%
+}
+
+.slider-button .chevron.right {
+    right: 0;
+    transform: translateY(-50%) rotate(180deg);
 }
 
 .slider-pagination {
@@ -84,33 +88,4 @@
 
 .slider-pagination .slider-page.is-active {
     background-color: rgba(255, 255, 255, 0.75);
-}
-
-.chevron::before {
-    border-style: solid;
-    border-width: 0.25em 0.25em 0 0;
-    content: '';
-    display: inline-block;
-    height: 0.45em;
-    left: 0.15em;
-    position: relative;
-    top: 0.15em;
-    transform: rotate(-45deg);
-    vertical-align: top;
-    width: 0.45em;
-}
-
-.chevron.right:before {
-    left: 0;
-    transform: rotate(45deg);
-}
-
-.chevron.bottom:before {
-    top: 0;
-    transform: rotate(135deg);
-}
-
-.chevron.left:before {
-    left: 0.25em;
-    transform: rotate(-135deg);
 }
