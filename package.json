@@ -1,6 +1,6 @@
 {
   "name": "ngx-hammerjs-carousel",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "scripts": {
     "ng": "ng",
     "start": "npx ng serve --open --port 4206",

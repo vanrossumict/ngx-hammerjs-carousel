@@ -9,12 +9,14 @@ import { Component, OnInit, Input, ElementRef, AfterViewChecked, ViewChild, Chan
       <div class="slider-panel" *ngFor="let slide of slides" [style.background-image]="'url(' + slide + ')'"></div>
     </div>
     <div class="slider-button left" *ngIf="!isTouchDevice" (click)="previousSlide()">
-        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="17 15 13 20" enable-background="new 17 15 13 20" fill="#fff">
+        <svg class="chevron" [style.width]="width/13" [style.padding]="width/30" 
+        xmlns="http://www.w3.org/2000/svg" viewBox="17 15 13 20" enable-background="new 17 15 13 20" fill="#fff">
           <path d="M27.3 34.7L17.6 25l9.7-9.7 1.4 1.4-8.3 8.3 8.3 8.3z"/>
         </svg>
     </div>
     <div class="slider-button right" *ngIf="!isTouchDevice" (click)="nextSlide()">
-      <svg class="chevron right" xmlns="http://www.w3.org/2000/svg" viewBox="17 15 13 20" enable-background="new 17 15 13 20" fill="#fff">
+      <svg class="chevron right" [style.width]="width/13" [style.padding]="width/30" 
+      xmlns="http://www.w3.org/2000/svg" viewBox="17 15 13 20" enable-background="new 17 15 13 20" fill="#fff">
           <path d="M27.3 34.7L17.6 25l9.7-9.7 1.4 1.4-8.3 8.3 8.3 8.3z"/>
         </svg>
     </div>
@@ -47,8 +49,8 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
   isAnimating: boolean;
   slideCount: number;
   isTouchDevice: boolean;
+  width: number;
 
-  private width: number;
   private activeSlide = 0;
   private sensitivity = 10;
   private animatingTimeout: any;
