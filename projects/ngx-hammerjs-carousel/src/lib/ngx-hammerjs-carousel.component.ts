@@ -9,13 +9,13 @@ import { Component, OnInit, Input, ElementRef, AfterViewChecked, ViewChild, Chan
       <div class="slider-panel" *ngFor="let slide of slides" [style.background-image]="'url(' + slide + ')'"></div>
     </div>
     <div class="slider-button left" *ngIf="!isTouchDevice && slides?.length > 1" (click)="previousSlide()">
-        <svg class="chevron" [style.width]="width/13" [style.margin-left]="width/30"
+        <svg class="chevron" [style.width]="width/13 + 'px'" [style.margin-left]="width/30 + 'px'"
         xmlns="http://www.w3.org/2000/svg" viewBox="17 15 13 20" enable-background="new 17 15 13 20" fill="#fff">
           <path d="M27.3 34.7L17.6 25l9.7-9.7 1.4 1.4-8.3 8.3 8.3 8.3z"/>
         </svg>
     </div>
     <div class="slider-button right" *ngIf="!isTouchDevice && slides?.length > 1" (click)="nextSlide()">
-      <svg class="chevron right" [style.width]="width/13" [style.margin-right]="width/30"
+      <svg class="chevron right" [style.width]="width/13 + 'px'" [style.margin-right]="width/30 + 'px'"
       xmlns="http://www.w3.org/2000/svg" viewBox="17 15 13 20" enable-background="new 17 15 13 20" fill="#fff">
           <path d="M27.3 34.7L17.6 25l9.7-9.7 1.4 1.4-8.3 8.3 8.3 8.3z"/>
         </svg>
