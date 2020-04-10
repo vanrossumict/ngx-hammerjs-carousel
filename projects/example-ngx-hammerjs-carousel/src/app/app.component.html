@@ -14,8 +14,24 @@
         <hammerjs-carousel [slides]="slides"></hammerjs-carousel>
     </div>
 
-    empty:
+    one slide:
+    <div style="width: 500px; height: 375px;">
+        <hammerjs-carousel [slides]="oneSlide"></hammerjs-carousel>
+    </div>
+    
+    many slides in small size:
+    <div style="width: 150px; height: 100px;">
+        <hammerjs-carousel [slides]="manySlides"></hammerjs-carousel>
+    </div>
+    
+    no slides:
     <div style="width: 500px; height: 375px;">
         <hammerjs-carousel></hammerjs-carousel>
     </div>
+    
+    empty array:
+    <div style="width: 500px; height: 375px;">
+        <hammerjs-carousel [slides]="empty"></hammerjs-carousel>
+    </div>
+    
 </div>
