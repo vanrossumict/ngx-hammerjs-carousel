@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ElementRef, AfterViewChecked, ViewChild, ChangeDetectorRef } from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'hammerjs-carousel',
   template: `
   <div class="slider-wrapper" #sliderWrapper>
@@ -63,10 +64,10 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked(): void {
     const sliderWrapperElement = this.sliderWrapper.nativeElement as HTMLElement;
+    this.width = sliderWrapperElement.offsetWidth;
     if (sliderWrapperElement.offsetWidth === this.width) {
       return;
     }
-    this.width = sliderWrapperElement.offsetWidth;
     this.sensitivity = this.width / 40;
     this.cdRef.detectChanges();
   }
