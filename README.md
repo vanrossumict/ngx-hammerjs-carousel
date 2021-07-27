@@ -26,11 +26,11 @@ import { HammerjsCarouselModule } from 'ngx-hammerjs-carousel';
 In your TypeScript:
 ```typescript
   slides = [
-    'https://cdn.mijnreservering.info/janvanrossum/37medium.jpg',
-    'https://cdn.mijnreservering.info/janvanrossum/38medium.jpg',
-    'https://cdn.mijnreservering.info/janvanrossum/39medium.jpg',
-    'https://cdn.mijnreservering.info/janvanrossum/40medium.jpg',
-    'https://cdn.mijnreservering.info/janvanrossum/41medium.jpg'
+    'https://dummyimage.com/600x400x/000/fff',
+    'https://dummyimage.com/601x401x/000/fff',
+    'https://dummyimage.com/602x402x/000/fff',
+    'https://dummyimage.com/603x403x/000/fff',
+    'https://dummyimage.com/604x404x/000/fff',
   ];
 ```
 

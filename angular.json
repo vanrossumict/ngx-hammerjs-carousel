@@ -10,7 +10,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/ngx-hammerjs-carousel/tsconfig.lib.json",
             "project": "projects/ngx-hammerjs-carousel/ng-package.json"
@@ -58,7 +58,6 @@
             "main": "projects/example-ngx-hammerjs-carousel/src/main.ts",
             "polyfills": "projects/example-ngx-hammerjs-carousel/src/polyfills.ts",
             "tsConfig": "projects/example-ngx-hammerjs-carousel/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/example-ngx-hammerjs-carousel/src/favicon.ico",
               "projects/example-ngx-hammerjs-carousel/src/assets"
@@ -66,7 +65,13 @@
             "styles": [
               "projects/example-ngx-hammerjs-carousel/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -79,7 +84,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -97,7 +101,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
