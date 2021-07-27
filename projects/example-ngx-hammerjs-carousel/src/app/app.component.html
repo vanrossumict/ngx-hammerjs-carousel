@@ -1,6 +1,11 @@
 <div style="height: 5000px;">
-    small:
+    extra small:
     <div style="width: 150px; height: 100px;">
+        <hammerjs-carousel [slides]="slides"></hammerjs-carousel>
+    </div>
+
+    small:
+    <div style="width: 300px; height: 200px;">
         <hammerjs-carousel [slides]="slides"></hammerjs-carousel>
     </div>
 
@@ -18,20 +23,30 @@
     <div style="width: 500px; height: 375px;">
         <hammerjs-carousel [slides]="oneSlide"></hammerjs-carousel>
     </div>
-    
+
+    many slides:
+    <div style="width: 500px; height: 375px;">
+        <hammerjs-carousel [slides]="manySlides"></hammerjs-carousel>
+    </div>
+
     many slides in small size:
+    <div style="width: 300px; height: 200px;">
+        <hammerjs-carousel [slides]="manySlides"></hammerjs-carousel>
+    </div>
+
+    many slides in extra small size:
     <div style="width: 150px; height: 100px;">
         <hammerjs-carousel [slides]="manySlides"></hammerjs-carousel>
     </div>
-    
+
     no slides:
     <div style="width: 500px; height: 375px;">
         <hammerjs-carousel></hammerjs-carousel>
     </div>
-    
+
     empty array:
     <div style="width: 500px; height: 375px;">
         <hammerjs-carousel [slides]="empty"></hammerjs-carousel>
     </div>
-    
+
 </div>

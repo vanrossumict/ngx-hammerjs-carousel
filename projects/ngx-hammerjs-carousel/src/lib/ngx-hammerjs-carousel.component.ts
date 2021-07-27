@@ -22,8 +22,8 @@ import { Component, OnInit, Input, ElementRef, AfterViewChecked, ViewChild, Chan
         </svg>
     </div>
     <div class="slider-pagination" *ngIf="slides?.length > 1">
-      <div *ngFor="let slide of slides; index as index;" (click)="goToSlide(index)">
-        <div class="slider-page" [ngClass]="{ 'is-active': isActive(index) }"></div>
+      <div *ngFor="let slide of slidesForPagination; index as index;" (click)="goToSlide(slide)">
+        <div class="slider-page" [ngClass]="{ 'is-active': isActive(slide) }"></div>
       </div>
     </div>
   </div>
@@ -44,6 +44,28 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
     }
   }
 
+  @Input() maxNumberOfVisibileInPagination = 15;
+
+  get slidesForPagination() {
+    if (this.slides == null) {
+      return null;
+    }
+    if (this.slides.length > this.maxNumberOfVisibileInPagination) {
+
+      if (this.activeSlideIndex === this.slides.length - 1) {
+        return this.slides.slice(this.activeSlideIndex - (this.maxNumberOfVisibileInPagination - 1),
+          this.activeSlideIndex + 2);
+      }
+      if (this.activeSlideIndex > this.maxNumberOfVisibileInPagination - 2) {
+        return this.slides.slice(this.activeSlideIndex - (this.maxNumberOfVisibileInPagination - 2),
+          this.activeSlideIndex + 2);
+      }
+
+      return this.slides.slice(0, this.maxNumberOfVisibileInPagination);
+    }
+    return this.slides;
+  }
+
   @ViewChild('sliderWrapper') sliderWrapper: ElementRef;
 
   sliderTransformStyle: string;
@@ -52,7 +74,7 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
   isTouchDevice: boolean;
   width: number;
 
-  private activeSlide = 0;
+  private activeSlideIndex = 0;
   private sensitivity = 10;
   private animatingTimeout: any;
 
@@ -75,61 +97,65 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
       return;
     }
     const percentage = 100 / this.slideCount * e.deltaX / window.innerWidth;
-    const transformPercentage = percentage - 100 / this.slideCount * this.activeSlide;
+    const transformPercentage = percentage - 100 / this.slideCount * this.activeSlideIndex;
     this.sliderTransformStyle = 'translateX( ' + transformPercentage + '% )';
     if (e.isFinal) {
       if (e.velocityX > 1) {
-        this.goToSlide(this.activeSlide - 1);
+        this.goToSlideIndex(this.activeSlideIndex - 1);
       } else if (e.velocityX < -1) {
-        this.goToSlide(this.activeSlide + 1);
+        this.goToSlideIndex(this.activeSlideIndex + 1);
       } else {
         if (percentage <= -(this.sensitivity / this.slideCount)) {
-          this.goToSlide(this.activeSlide + 1);
+          this.goToSlideIndex(this.activeSlideIndex + 1);
         } else if (percentage >= (this.sensitivity / this.slideCount)) {
-          this.goToSlide(this.activeSlide - 1);
+          this.goToSlideIndex(this.activeSlideIndex - 1);
         } else {
-          this.goToSlide(this.activeSlide);
+          this.goToSlideIndex(this.activeSlideIndex);
         }
       }
     }
   }
 
   previousSlide() {
-    const slideIndex = this.activeSlide - 1;
+    const slideIndex = this.activeSlideIndex - 1;
     if (slideIndex < 0) {
-      this.goToSlide(this.slideCount - 1);
+      this.goToSlideIndex(this.slideCount - 1);
     } else {
-      this.goToSlide(slideIndex);
+      this.goToSlideIndex(slideIndex);
     }
   }
 
   nextSlide() {
-    const slideIndex = this.activeSlide + 1;
+    const slideIndex = this.activeSlideIndex + 1;
     if (slideIndex === this.slideCount) {
-      this.goToSlide(0);
+      this.goToSlideIndex(0);
     } else {
-      this.goToSlide(slideIndex);
+      this.goToSlideIndex(slideIndex);
     }
   }
 
-  goToSlide(slideNumber: number) {
-    if (slideNumber < 0) {
-      this.activeSlide = 0;
-    } else if (slideNumber > this.slideCount - 1) {
-      this.activeSlide = this.slideCount - 1;
+  goToSlide(slide: string) {
+    this.goToSlideIndex(this.slides.indexOf(slide));
+  }
+
+  goToSlideIndex(slideIndex: number) {
+    if (slideIndex < 0) {
+      this.activeSlideIndex = 0;
+    } else if (slideIndex > this.slideCount - 1) {
+      this.activeSlideIndex = this.slideCount - 1;
     } else {
-      this.activeSlide = slideNumber;
+      this.activeSlideIndex = slideIndex;
     }
 
     this.isAnimating = true;
-    const percentage = -(100 / this.slideCount) * this.activeSlide;
+    const percentage = -(100 / this.slideCount) * this.activeSlideIndex;
     this.sliderTransformStyle = 'translateX(' + percentage + '%)';
     clearTimeout(this.animatingTimeout);
     this.animatingTimeout = setTimeout(() => this.isAnimating = false, 400);
   }
 
-  isActive(index: number) {
-    return this.activeSlide === index;
+  isActive(slide: string) {
+    return this.slides[this.activeSlideIndex] === slide;
   }
 
   getWidthStyle() {

@@ -6,16 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  slides = [
-    'https://cdn.mijnreservering.info/janvanrossum/37medium.jpg',
-    'https://cdn.mijnreservering.info/janvanrossum/38medium.jpg',
-    'https://cdn.mijnreservering.info/janvanrossum/39medium.jpg',
-    'https://cdn.mijnreservering.info/janvanrossum/40medium.jpg',
-    'https://cdn.mijnreservering.info/janvanrossum/41medium.jpg'
-  ];
+  slides = this.getNumberOfSlides(5);
   empty = [];
-  oneSlide = [
-    'https://cdn.mijnreservering.info/janvanrossum/41medium.jpg'
-  ];
-  manySlides = [...this.slides, ...this.slides, ...this.slides, ...this.slides];
+  oneSlide = this.getNumberOfSlides(1);
+  manySlides = this.getNumberOfSlides(50);
+
+  getNumberOfSlides(howMany: number) {
+    const slides = [];
+    for (let index = 0; index < howMany; index++) {
+      slides.push(this.slideUrlForIndex(index));
+    }
+    return slides;
+  }
+
+  slideUrlForIndex(i: number) {
+    return `https://dummyimage.com/${600 + i}x${400 + i}/000/fff`;
+  }
 }

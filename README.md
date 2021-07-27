@@ -41,8 +41,6 @@ In your template:
 
 # Library development info
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
-
 ## Development
 
 1. Run `npm run build-watch` to build the library and watch for changes.
