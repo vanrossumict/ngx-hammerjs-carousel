@@ -92,7 +92,10 @@ export class HammerjsCarouselComponent implements OnInit, AfterViewChecked {
   }
 
   onPan(e: any) {
-    if (e.velocityX === 0 || Math.abs(e.velocityY) > Math.abs(e.velocityX)) {
+    if (this.slides.length <= 1) {
+      return;
+    }
+    if (Math.abs(e.velocityY) > Math.abs(e.velocityX)) {
       // Vertical scroll
       return;
     }
