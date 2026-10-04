@@ -1,0 +1,67 @@
+<h1>ngx-hammerjs-carousel</h1>
+
+<section>
+  <h2>Two-way bound index ({{ activeIndex() + 1 }}/{{ slides.length }})</h2>
+  <div class="frame" style="width: 500px; height: 375px">
+    <hammerjs-carousel [slides]="slides" [(activeIndex)]="activeIndex" showPaginationCount />
+  </div>
+  <button type="button" (click)="activeIndex.set(0)">First</button>
+  <button type="button" (click)="activeIndex.set(slides.length - 1)">Last</button>
+</section>
+
+<section>
+  <h2>Extra small</h2>
+  <div class="frame" style="width: 150px; height: 100px">
+    <hammerjs-carousel [slides]="slides" />
+  </div>
+</section>
+
+<section>
+  <h2>Small</h2>
+  <div class="frame" style="width: 300px; height: 200px">
+    <hammerjs-carousel [slides]="slides" />
+  </div>
+</section>
+
+<section>
+  <h2>Responsive (100% wide, 16:9)</h2>
+  <div class="frame" style="width: 100%; aspect-ratio: 16 / 9; max-width: 1600px">
+    <hammerjs-carousel [slides]="slides" />
+  </div>
+</section>
+
+<section>
+  <h2>Contained images with custom theme</h2>
+  <div class="frame themed" style="width: 500px; height: 375px">
+    <hammerjs-carousel [slides]="slides" />
+  </div>
+</section>
+
+<section>
+  <h2>One slide</h2>
+  <div class="frame" style="width: 500px; height: 375px">
+    <hammerjs-carousel [slides]="oneSlide" />
+  </div>
+</section>
+
+<section>
+  <h2>Many slides</h2>
+  <div class="frame" style="width: 500px; height: 375px">
+    <hammerjs-carousel [slides]="manySlides" showPaginationCount />
+  </div>
+</section>
+
+<section>
+  <h2>Many slides in small size</h2>
+  <div class="frame" style="width: 300px; height: 200px">
+    <hammerjs-carousel [slides]="manySlides" [maxNumberOfVisibileInPagination]="7" />
+  </div>
+</section>
+
+<section>
+  <h2>No slides / empty array (renders nothing)</h2>
+  <div class="frame" style="width: 500px; height: 50px">
+    <hammerjs-carousel />
+    <hammerjs-carousel [slides]="empty" />
+  </div>
+</section>

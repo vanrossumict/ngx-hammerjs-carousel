@@ -1,11 +1,11 @@
 {
   "name": "ngx-hammerjs-carousel",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "author": {
     "name": "Jan van Rossum",
     "url": "https://github.com/vanrossumict"
   },
-  "description": "A photo/image carousel/slider/swiper for Angular that uses Hammer.JS",
+  "description": "A lightweight, touch friendly photo/image carousel/slider/swiper for Angular with smooth swiping, lazy loading and zoneless support",
   "keywords": [
     "angular",
     "hammerjs",
@@ -14,18 +14,27 @@
     "carousel",
     "slider",
     "swiper",
-    "typescript"
+    "swipe",
+    "touch",
+    "signals",
+    "zoneless",
+    "standalone"
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": ">= 2.0.0",
-    "@angular/core": ">= 2.0.0",
-    "hammerjs": "^2.0.0"
+    "@angular/common": ">=19.0.0",
+    "@angular/core": ">=19.0.0"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.3.0"
   },
+  "sideEffects": false,
   "repository": {
-    "url": "https://github.com/vanrossumict/ngx-hammerjs-carousel"
+    "type": "git",
+    "url": "git+https://github.com/vanrossumict/ngx-hammerjs-carousel.git"
+  },
+  "homepage": "https://github.com/vanrossumict/ngx-hammerjs-carousel#readme",
+  "bugs": {
+    "url": "https://github.com/vanrossumict/ngx-hammerjs-carousel/issues"
   }
 }

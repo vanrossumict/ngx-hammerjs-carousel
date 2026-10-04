@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  padding: 16px;
+  font-family: system-ui, sans-serif;
+}
+
+section {
+  margin-bottom: 32px;
+}
+
+.frame {
+  max-width: 100%;
+  margin-bottom: 8px;
+}
+
+.themed {
+  --hammerjs-carousel-background: #222;
+  --hammerjs-carousel-background-size: contain;
+  --hammerjs-carousel-dot-color: #ffcc00;
+  --hammerjs-carousel-transition: 250ms ease-out;
+}
