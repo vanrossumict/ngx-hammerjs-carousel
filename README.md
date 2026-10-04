@@ -9,6 +9,8 @@ A lightweight, touch friendly photo/image carousel/slider/swiper for Angular.
 - Themeable with CSS custom properties
 - No runtime dependencies (Hammer.JS is no longer required since v2)
 
+**[Live demo and playground](https://vanrossumict.github.io/ngx-hammerjs-carousel/)**
+
 Inspired by [a great blog post](https://blog.envylabs.com/build-your-own-touch-slider-with-hammerjs-af99665d2869) from Drew Powers.
 
 ## Compatibility
@@ -140,7 +142,7 @@ Requires Node.js `^22.22.3 || ^24.15.0 || >=26`.
 npm install
 npm run build        # build the library to dist/ngx-hammerjs-carousel
 npm test             # run the unit tests (Vitest)
-npm start            # start the example app on http://localhost:4206 (build the library first)
+npm start            # start the demo site on http://localhost:4206 (build the library first)
 npm run build-watch  # rebuild the library on changes while the example app is running
 ```
 
@@ -149,6 +151,8 @@ npm run build-watch  # rebuild the library on changes while the example app is r
 1. Update the version in `projects/ngx-hammerjs-carousel/package.json` and add an entry to `CHANGELOG.md`.
 2. Run `npm run prepublish-check` (tests, library build and example build).
 3. Run `npm publish ./dist/ngx-hammerjs-carousel`.
+
+The demo site is deployed to GitHub Pages automatically on every push to `master`.
 
 ## License
 

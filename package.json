@@ -9,7 +9,8 @@
     "build-example": "ng build example-ngx-hammerjs-carousel",
     "test": "ng test ngx-hammerjs-carousel --watch=false",
     "test-watch": "ng test ngx-hammerjs-carousel",
-    "prepublish-check": "npm run test && npm run build && npm run build-example"
+    "prepublish-check": "npm run test && npm run build && npm run build-example",
+    "build-demo": "ng build example-ngx-hammerjs-carousel --base-href /ngx-hammerjs-carousel/"
   },
   "private": true,
   "packageManager": "npm@11.6.0",

@@ -9,6 +9,8 @@ A lightweight, touch friendly photo/image carousel/slider/swiper for Angular.
 - Themeable with CSS custom properties
 - No runtime dependencies (Hammer.JS is no longer required since v2)
 
+**[Live demo and playground](https://vanrossumict.github.io/ngx-hammerjs-carousel/)**
+
 Inspired by [a great blog post](https://blog.envylabs.com/build-your-own-touch-slider-with-hammerjs-af99665d2869) from Drew Powers.
 
 ## Compatibility
