@@ -1,0 +1,258 @@
+<header class="hero">
+  <div class="container">
+    <p class="eyebrow">Angular library · v{{ version }}</p>
+    <h1>ngx-hammerjs-carousel</h1>
+    <p class="tagline">
+      A lightweight, touch friendly image carousel for Angular. Smooth swiping, lazy loading and
+      zoneless ready — without any runtime dependencies.
+    </p>
+
+    <div class="actions">
+      <div class="install">
+        <code>{{ installCommand }}</code>
+        <button type="button" class="copy" (click)="copy('install', installCommand)">
+          {{ copied() === 'install' ? 'Copied!' : 'Copy' }}
+        </button>
+      </div>
+      <a class="button" href="https://github.com/vanrossumict/ngx-hammerjs-carousel">GitHub</a>
+      <a class="button" href="https://www.npmjs.com/package/ngx-hammerjs-carousel">npm</a>
+    </div>
+
+    <div class="showcase">
+      <hammerjs-carousel
+        #hero
+        [slides]="heroSlides"
+        [(activeIndex)]="heroIndex"
+        ariaLabel="Showcase"
+        showPaginationCount
+      />
+    </div>
+    <div class="showcase-controls">
+      <button type="button" class="button small" (click)="previous()">← Previous</button>
+      <span>
+        <code>[(activeIndex)]</code> = <strong>{{ heroIndex() }}</strong>
+      </span>
+      <button type="button" class="button small" (click)="next()">Next →</button>
+    </div>
+    <p class="hint">Swipe with your finger, drag with your mouse or use the arrow keys.</p>
+  </div>
+</header>
+
+<main>
+  <section class="container">
+    <h2>Features</h2>
+    <ul class="features">
+      <li>
+        <h3>Smooth swiping</h3>
+        <p>
+          Native Pointer Events for touch, pen and mouse. The slide follows your finger, supports
+          flicks and has a rubber band at the edges.
+        </p>
+      </li>
+      <li>
+        <h3>Fast</h3>
+        <p>
+          Signals and OnPush. Pointer handling runs outside Angular's zone, so swiping never
+          triggers application wide change detection.
+        </p>
+      </li>
+      <li>
+        <h3>Lazy loading</h3>
+        <p>
+          Only the visible slide and its neighbours are loaded, and only once the carousel scrolls
+          into view.
+        </p>
+      </li>
+      <li>
+        <h3>Zoneless ready</h3>
+        <p>
+          A standalone component that works in zoneless and zone.js applications, from Angular 19
+          and up. This page runs without zone.js.
+        </p>
+      </li>
+      <li>
+        <h3>Accessible</h3>
+        <p>
+          Real buttons, keyboard navigation (arrows, Home, End), translatable ARIA labels and
+          support for reduced motion.
+        </p>
+      </li>
+      <li>
+        <h3>Themeable</h3>
+        <p>Style it with CSS custom properties: background, image fit, dot color and transition.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="container">
+    <h2>Playground</h2>
+    <div class="playground">
+      <form class="controls" (submit)="$event.preventDefault()">
+        <label>
+          <span
+            >Slides <output>{{ slideCount() }}</output></span
+          >
+          <input
+            type="range"
+            min="1"
+            max="50"
+            [value]="slideCount()"
+            (input)="slideCount.set(numberValue($event))"
+          />
+        </label>
+        <label>
+          <span
+            >Max. pagination dots <output>{{ maxDots() }}</output></span
+          >
+          <input
+            type="range"
+            min="3"
+            max="15"
+            [value]="maxDots()"
+            (input)="maxDots.set(numberValue($event))"
+          />
+        </label>
+        <label>
+          <span
+            >Transition <output>{{ transitionMs() }} ms</output></span
+          >
+          <input
+            type="range"
+            min="0"
+            max="1000"
+            step="50"
+            [value]="transitionMs()"
+            (input)="transitionMs.set(numberValue($event))"
+          />
+        </label>
+        <label>
+          <span>Image fit</span>
+          <select [value]="backgroundSize()" (change)="backgroundSize.set($any(value($event)))">
+            <option value="cover">cover</option>
+            <option value="contain">contain</option>
+          </select>
+        </label>
+        <label>
+          <span>Dot color</span>
+          <input type="color" [value]="dotColor()" (input)="dotColor.set(value($event))" />
+        </label>
+        <label class="check">
+          <input
+            type="checkbox"
+            [checked]="showPaginationCount()"
+            (change)="showPaginationCount.set(checked($event))"
+          />
+          <span>Show pagination count</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" [checked]="lazyLoad()" (change)="lazyLoad.set(checked($event))" />
+          <span>Lazy load images</span>
+        </label>
+        <label class="check">
+          <input
+            type="checkbox"
+            [checked]="alwaysShowButtons()"
+            (change)="alwaysShowButtons.set(checked($event))"
+          />
+          <span>Show buttons on touch devices</span>
+        </label>
+      </form>
+
+      <div class="preview">
+        <div class="frame" [style]="playgroundStyleVars()">
+          <hammerjs-carousel
+            [slides]="playgroundSlides()"
+            [(activeIndex)]="playgroundIndex"
+            [maxNumberOfVisibileInPagination]="maxDots()"
+            [showPaginationCount]="showPaginationCount()"
+            [lazyLoad]="lazyLoad()"
+            [disableTouchdeviceEnhancements]="alwaysShowButtons()"
+          />
+        </div>
+        <div class="code">
+          <button
+            type="button"
+            class="copy"
+            (click)="
+              copy(
+                'template',
+                playgroundTemplate() + (playgroundStyles() ? '\n\n' + playgroundStyles() : '')
+              )
+            "
+          >
+            {{ copied() === 'template' ? 'Copied!' : 'Copy' }}
+          </button>
+          <pre><code>{{ playgroundTemplate() }}</code></pre>
+          @if (playgroundStyles(); as styles) {
+            <pre><code>{{ styles }}</code></pre>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Examples</h2>
+    <div class="examples">
+      <figure>
+        <div class="frame" style="width: 150px; height: 100px">
+          <hammerjs-carousel [slides]="smallSlides" ariaLabel="Extra small example" />
+        </div>
+        <figcaption>Extra small — the buttons scale with the carousel</figcaption>
+      </figure>
+      <figure>
+        <div class="frame" style="width: 300px; height: 200px">
+          <hammerjs-carousel [slides]="smallSlides" ariaLabel="Small example" />
+        </div>
+        <figcaption>Small</figcaption>
+      </figure>
+      <figure>
+        <div class="frame" style="width: 300px; height: 200px">
+          <hammerjs-carousel
+            [slides]="manySlides"
+            [maxNumberOfVisibileInPagination]="7"
+            showPaginationCount
+            ariaLabel="Many slides example"
+          />
+        </div>
+        <figcaption>50 slides — the pagination dots scroll along</figcaption>
+      </figure>
+      <figure>
+        <div class="frame" style="width: 300px; height: 200px">
+          <hammerjs-carousel [slides]="oneSlide" ariaLabel="Single slide example" />
+        </div>
+        <figcaption>A single slide — no buttons, dots or swiping</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Usage</h2>
+    <p>Import the standalone component and give its parent element a size:</p>
+    <div class="code">
+      <button type="button" class="copy" (click)="copy('standalone', standaloneSnippet)">
+        {{ copied() === 'standalone' ? 'Copied!' : 'Copy' }}
+      </button>
+      <pre><code>{{ standaloneSnippet }}</code></pre>
+    </div>
+    <p>Using NgModules? Import <code>HammerjsCarouselModule</code> instead:</p>
+    <div class="code">
+      <button type="button" class="copy" (click)="copy('module', moduleSnippet)">
+        {{ copied() === 'module' ? 'Copied!' : 'Copy' }}
+      </button>
+      <pre><code>{{ moduleSnippet }}</code></pre>
+    </div>
+    <p>
+      All inputs, methods and theming options are described in the
+      <a href="https://github.com/vanrossumict/ngx-hammerjs-carousel#readme">README</a>.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    MIT licensed · Made by
+    <a href="https://github.com/vanrossumict">Jan van Rossum</a> · Photos from
+    <a href="https://picsum.photos">Lorem Picsum</a> / Unsplash
+  </div>
+</footer>

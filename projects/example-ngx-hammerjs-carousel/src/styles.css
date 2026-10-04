@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --text: #1d1d1f;
+  --muted: #5f6368;
+  --surface: #f6f7f9;
+  --border: #e3e5e8;
+  --accent: #c2185b;
+  --on-accent: #ffffff;
+  --hero-glow: rgba(194, 24, 91, 0.12);
+  --shadow: rgba(0, 0, 0, 0.18);
+  --code-bg: #1d1f24;
+  --code-text: #e6e6e6;
+  /* Placeholder color of the carousels while images load. */
+  --hammerjs-carousel-background: var(--surface);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111214;
+    --text: #ececec;
+    --muted: #a0a4ab;
+    --surface: #1a1c1f;
+    --border: #2c2f34;
+    --accent: #f06292;
+    --on-accent: #111214;
+    --hero-glow: rgba(240, 98, 146, 0.16);
+    --shadow: rgba(0, 0, 0, 0.5);
+    --code-bg: #0b0c0e;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}

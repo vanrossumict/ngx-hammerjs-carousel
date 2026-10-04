@@ -1,0 +1,320 @@
+:host {
+  display: block;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+section {
+  padding: 48px 0 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.1;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+}
+
+a {
+  color: var(--accent);
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+/* Hero */
+
+.hero {
+  padding: 56px 0 8px;
+  background: radial-gradient(ellipse at top, var(--hero-glow), transparent 70%);
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 0 24px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.install {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 16px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.install code {
+  white-space: nowrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: var(--accent);
+}
+
+.button.small {
+  padding: 6px 12px;
+}
+
+.copy {
+  border: 0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 64px;
+}
+
+.showcase {
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px var(--shadow);
+}
+
+.showcase-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Features */
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.features li {
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.features p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Playground */
+
+.playground {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .playground {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+.controls label > span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls output {
+  color: var(--muted);
+}
+
+.controls .check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.controls input[type='range'],
+.controls select {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.controls input[type='checkbox'] {
+  accent-color: var(--accent);
+}
+
+.controls select {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.preview .frame {
+  aspect-ratio: 3 / 2;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.code {
+  position: relative;
+  border-radius: 12px;
+  background: var(--code-bg);
+  color: var(--code-text);
+  margin-bottom: 16px;
+}
+
+.code .copy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.code pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+.code pre + pre {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Examples */
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-end;
+}
+
+.examples figure {
+  margin: 0;
+  max-width: 100%;
+}
+
+.examples .frame {
+  max-width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+figcaption {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 300px;
+}
+
+/* Footer */
+
+footer {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .install {
+    width: 100%;
+    justify-content: space-between;
+    scrollbar-width: none;
+  }
+
+  .install code {
+    font-size: 0.8rem;
+  }
+
+  .showcase-controls span {
+    order: 3;
+    flex-basis: 100%;
+    text-align: center;
+  }
+}

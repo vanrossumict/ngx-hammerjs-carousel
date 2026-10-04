@@ -1,0 +1,73 @@
+@if (slideCount() > 0) {
+  <div
+    class="slider-wrapper"
+    role="region"
+    aria-roledescription="carousel"
+    tabindex="0"
+    [attr.aria-label]="ariaLabel()"
+    (keydown)="onKeydown($event)"
+  >
+    <div
+      class="slider"
+      [class.is-animating]="!isDragging()"
+      [class.is-dragging]="isDragging()"
+      [style.width.%]="slideCount() * 100"
+      [style.transform]="trackTransform()"
+    >
+      @for (slide of slides(); track $index; let index = $index) {
+        <div
+          class="slider-panel"
+          role="group"
+          aria-roledescription="slide"
+          [attr.aria-label]="index + 1 + ' / ' + slideCount()"
+          [attr.aria-hidden]="index !== currentIndex() ? 'true' : null"
+          [attr.data-background-image]="slide"
+          [style.background-image]="backgroundImages()[index]"
+        ></div>
+      }
+    </div>
+
+    @if (showButtons()) {
+      <button
+        type="button"
+        class="slider-button left"
+        [attr.aria-label]="previousLabel()"
+        (click)="previousSlide()"
+      >
+        <svg class="chevron" viewBox="17 15 13 20" fill="#fff" aria-hidden="true">
+          <path d="M27.3 34.7L17.6 25l9.7-9.7 1.4 1.4-8.3 8.3 8.3 8.3z" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="slider-button right"
+        [attr.aria-label]="nextLabel()"
+        (click)="nextSlide()"
+      >
+        <svg class="chevron right" viewBox="17 15 13 20" fill="#fff" aria-hidden="true">
+          <path d="M27.3 34.7L17.6 25l9.7-9.7 1.4 1.4-8.3 8.3 8.3 8.3z" />
+        </svg>
+      </button>
+    }
+
+    @if (slideCount() > 1) {
+      <div class="slider-pagination">
+        @for (index of paginationIndexes(); track index) {
+          <button
+            type="button"
+            class="slider-page-button"
+            [attr.aria-label]="goToSlideLabel() + ' ' + (index + 1)"
+            [attr.aria-current]="index === currentIndex() ? 'true' : null"
+            (click)="goToSlideIndex(index)"
+          >
+            <span class="slider-page" [class.is-active]="index === currentIndex()"></span>
+          </button>
+        }
+      </div>
+    }
+
+    @if (showPaginationCount() && slideCount() > 1) {
+      <div class="slider-pagination-count">{{ currentIndex() + 1 }}/{{ slideCount() }}</div>
+    }
+  </div>
+}
